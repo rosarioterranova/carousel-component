@@ -94,5 +94,29 @@
                 }
             }
         }
+
+        .dummy-card{
+            animation-name: loading;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+
+            .dummy-img{
+                height: 150px;
+                width: 220px;
+                background-color: grey;
+            }
+
+            span{
+                background-color: grey;
+                color: grey;
+            }
+        }
     }
 }
+
+@keyframes loading {
+    0% {opacity: 0.4;}
+    50% {opacity: 1;}
+    100% {opacity: 0.4;}
+
+  }

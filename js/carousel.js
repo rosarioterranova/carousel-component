@@ -26,9 +26,7 @@ export default class Carousel{
         })();
     }
 
-    render(){
-        //Creating carousel container
-        const container = document.getElementById(this.option.container)
+    createCarouselContainer(container){
         container.innerHTML = `
         <div class="carousel">
             <div class="header">
@@ -42,15 +40,39 @@ export default class Carousel{
             </div>
             <div class="cards-container">
                 <div class="scroll-action left-scroll noselect"><</div>
-                <div class="cards-overflow"></div>
+                <div class="cards-overflow">
+                    <div class="card dummy-card">
+                        <div class="dummy-img"></div>
+                        <div class="content">
+                            <div><span>Lorem ipsum dolor sit amet</span></div>
+                            <div><span>consectetur</span></div>
+                        </div>
+                    </div>
+                    <div class="card dummy-card">
+                        <div class="dummy-img"></div>
+                        <div class="content">
+                            <div><span>Lorem</span></div>
+                            <div><span>ipsum dolor sit amet consectetur</span></div>
+                        </div>
+                    </div>
+                    <div class="card dummy-card">
+                        <div class="dummy-img"></div>
+                        <div class="content">
+                            <div><span>Lorem ipsum dolor sit amet</span></div>
+                            <div><span>consectetur</span></div>
+                            <div><span>consectetur consectetur</span></div>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="scroll-action right-scroll noselect">></div>
             </div>
         </div>
         `;
+    }
 
-        //Creating cards
-        const cardsSection = container.querySelector(".cards-overflow")
-        for (const card of this.cards) {
+    createCards(cardsSection, cards){
+        for (const card of cards) {
             cardsSection.innerHTML += `
             <div class="card">
                 <img src=${card.image} alt="">
@@ -61,5 +83,16 @@ export default class Carousel{
             </div>
             `
         }
+    }
+
+    render(){
+        const container = document.getElementById(this.option.container)
+        this.createCarouselContainer(container)
+
+        //Fetching simulation
+        setTimeout(() => {
+            container.querySelector(".cards-overflow").innerHTML = ""
+            this.createCards(container.querySelector(".cards-overflow"), this.cards)
+        },3000)
     }
 }
