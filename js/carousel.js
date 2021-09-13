@@ -2,31 +2,23 @@ export default class Carousel{
 
     constructor(option){
         this.option = option
-        this.cards = this.option.fetchCards()
-        this.render()
-        this.setSlidingEvents()
+        this.init()
     }
 
-    setSlidingEvents(){
-        const slider = document.querySelector(".cards-container");
-        const leftButton = document.querySelector(".left-scroll")
-        const rightButton = document.querySelector(".right-scroll")
+    init(){
+        const container = document.getElementById(this.option.container)
+        this.renderCarouselContainer(container)
+        
+        setTimeout(() => { //Fetching simulation
+            const cards = this.option.fetchCards()
+            container.querySelector(".cards-overflow").innerHTML = "" //remove skeleton
+            this.renderCards(container.querySelector(".cards-overflow"), cards)
+            this.setSlidingEvents(container)
+        },3000)
 
-        const SCROLL_SPEED = 6;
-        let scrollDirection = 0; //0 stop, -1 left, +1 right
-
-        leftButton.addEventListener("mousedown", ()=>scrollDirection = -1)
-        rightButton.addEventListener("mousedown", ()=>scrollDirection = 1)
-        leftButton.addEventListener("mouseup", ()=> scrollDirection = 0);
-        rightButton.addEventListener("mouseup", ()=> scrollDirection = 0);
-
-        (function slide() {
-            slider.scrollLeft += scrollDirection * SCROLL_SPEED;
-            requestAnimationFrame(slide);
-        })();
     }
 
-    createCarouselContainer(container){
+    renderCarouselContainer(container){
         container.innerHTML = `
         <div class="carousel">
             <div class="header">
@@ -71,7 +63,7 @@ export default class Carousel{
         `;
     }
 
-    createCards(cardsSection, cards){
+    renderCards(cardsSection, cards){
         for (const card of cards) {
             cardsSection.innerHTML += `
             <div class="card">
@@ -85,14 +77,25 @@ export default class Carousel{
         }
     }
 
-    render(){
-        const container = document.getElementById(this.option.container)
-        this.createCarouselContainer(container)
+    setSlidingEvents(container){
+        const slider = container.querySelector(".cards-container");
+        const leftButton = container.querySelector(".left-scroll")
+        const rightButton = container.querySelector(".right-scroll")
 
-        //Fetching simulation
-        setTimeout(() => {
-            container.querySelector(".cards-overflow").innerHTML = ""
-            this.createCards(container.querySelector(".cards-overflow"), this.cards)
-        },3000)
+        const SCROLL_SPEED = 6;
+        let scrollDirection = 0; //0 stop, -1 left, +1 right
+
+        //Button sliding
+        leftButton.addEventListener("mousedown", ()=>scrollDirection = -1);
+        rightButton.addEventListener("mousedown", ()=>scrollDirection = 1);
+        leftButton.addEventListener("mouseup", ()=> scrollDirection = 0);
+        rightButton.addEventListener("mouseup", ()=> scrollDirection = 0);
+
+        (function slide() {
+            slider.scrollLeft += scrollDirection * SCROLL_SPEED;
+            requestAnimationFrame(slide);
+        })();
     }
+
+    
 }
