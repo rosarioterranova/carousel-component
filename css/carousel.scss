@@ -1,0 +1,15 @@
+.carousel{
+    display: flex;
+    flex-direction: column;
+
+    .header{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .title{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
