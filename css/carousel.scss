@@ -5,48 +5,94 @@
     .header{
         display: flex;
         flex-direction: row;
-    }
+        margin: 10px;
+        align-items: center;
 
-    .title{
-        display: flex;
-        flex-direction: column;
+        .icon{
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+            background-color: blueviolet;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    
+        .titles{
+            display: flex;
+            flex-direction: column;
+
+            .title{
+                font-size: 1.2rem;
+                color:blueviolet;
+            }
+        
+            .subtitle{
+                font-size: 0.9rem;
+                color: cadetblue;
+            }
+        }
     }
 
     .cards-container{
         display: flex;
         flex-direction: row;
         overflow: scroll;
-        overflow: hidden; 
-    }
-
-    .cards-overflow{
-        display: flex;
-        flex-direction: row;
-    } 
-
-    .card{
-        margin: 10px;
-    }
-
-    .scroll-action{
-        position: absolute;
-        cursor: pointer;
-        width: 40px;
-        height: 200px;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        z-index: 10;
-        display: flex;
-        justify-content: center;
+        overflow: hidden;
         align-items: center;
-    }
+        
 
-    .left-scroll{
-        left: 0;
+        .cards-overflow{
+            display: flex;
+            flex-direction: row;
+        }
 
-    }
+        .scroll-action{
+            position: absolute;
+            cursor: pointer;
+            width: 40px;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+            
+        }
+    
+        .scroll-action:hover{
+            opacity: 1;
+        }
+    
+        .left-scroll{
+            left: 0;
+    
+        }
+    
+        .right-scroll{
+            right:0;
+        }
+    
+        .card{
+            margin: 10px;
+            box-shadow: 0px 0px 2px grey;
+            background-color: white;
 
-    .right-scroll{
-        right:0;
+            img{
+                object-fit: cover;
+                height: 150px;
+                width: 220px;
+            }
+
+            .content{
+                padding: 6px;
+                .title{
+                    color: blueviolet;
+                }
+            }
+        }
     }
 }

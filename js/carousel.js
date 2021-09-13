@@ -31,16 +31,18 @@ export default class Carousel{
         document.getElementById(this.option.container).innerHTML = `
         <div class="carousel">
             <div class="header">
-                <span class="material-icons">${this.option.icon}</span>
-                <div class="title">
-                    <p>${this.option.title}</p>
-                    <p>${this.option.subtitle}</p>
+                <div class="icon">
+                    <span class="material-icons">${this.option.icon}</span>
+                </div>
+                <div class="titles">
+                    <p class="title">${this.option.title}</p>
+                    <p class="subtitle">${this.option.subtitle}</p>
                 </div>
             </div>
             <div class="cards-container">
-                <div class="scroll-action left-scroll"><</div>
+                <div class="scroll-action left-scroll noselect"><</div>
                 <div class="cards-overflow cards-${this.option.container}"></div>
-                <div class="scroll-action right-scroll">></div>
+                <div class="scroll-action right-scroll noselect">></div>
             </div>
         </div>
         `;
@@ -51,7 +53,10 @@ export default class Carousel{
             cardsSection.innerHTML += `
             <div class="card">
                 <img src=${card.image} alt="">
-                <p>${card.title}</p>
+                <div class="content">
+                    <p class="title">${card.title}</p>
+                    <p>text</p>
+                </div>
             </div>
             `
         }

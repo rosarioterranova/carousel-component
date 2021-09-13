@@ -16,9 +16,27 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  margin: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.carousel .title {
+.carousel .header .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10px;
+  background-color: blueviolet;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.carousel .header .titles {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,6 +44,16 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.carousel .header .titles .title {
+  font-size: 1.2rem;
+  color: blueviolet;
+}
+
+.carousel .header .titles .subtitle {
+  font-size: 0.9rem;
+  color: cadetblue;
 }
 
 .carousel .cards-container {
@@ -38,9 +66,12 @@
           flex-direction: row;
   overflow: scroll;
   overflow: hidden;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.carousel .cards-overflow {
+.carousel .cards-container .cards-overflow {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,16 +81,12 @@
           flex-direction: row;
 }
 
-.carousel .card {
-  margin: 10px;
-}
-
-.carousel .scroll-action {
+.carousel .cards-container .scroll-action {
   position: absolute;
   cursor: pointer;
   width: 40px;
-  height: 200px;
-  background-color: rgba(0, 0, 0, 0.5);
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   z-index: 10;
   display: -webkit-box;
@@ -71,13 +98,42 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
-.carousel .left-scroll {
+.carousel .cards-container .scroll-action:hover {
+  opacity: 1;
+}
+
+.carousel .cards-container .left-scroll {
   left: 0;
 }
 
-.carousel .right-scroll {
+.carousel .cards-container .right-scroll {
   right: 0;
+}
+
+.carousel .cards-container .card {
+  margin: 10px;
+  -webkit-box-shadow: 0px 0px 2px grey;
+          box-shadow: 0px 0px 2px grey;
+  background-color: white;
+}
+
+.carousel .cards-container .card img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 150px;
+  width: 220px;
+}
+
+.carousel .cards-container .card .content {
+  padding: 6px;
+}
+
+.carousel .cards-container .card .content .title {
+  color: blueviolet;
 }
 /*# sourceMappingURL=carousel.css.map */

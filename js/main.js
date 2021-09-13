@@ -8,56 +8,56 @@ const option1 = {
     fetchCards(chunkSize){
         return [
             {
-                image:"https://picsum.photos/200",
+                image:"https://picsum.photos/400",
                 type:"video",
                 duration:3600,
                 title:"Just a title",
                 cardinality: "single"
             },
             {
-                image:"https://picsum.photos/200",
+                image:"https://picsum.photos/400",
                 type:"video",
                 duration:3600,
                 title:"Just a title",
                 cardinality: "single"
             },
             {
-                image:"https://picsum.photos/200",
+                image:"https://picsum.photos/400",
                 type:"video",
                 duration:3600,
                 title:"Just a title",
                 cardinality: "single"
             },
             {
-                image:"https://picsum.photos/200",
+                image:"https://picsum.photos/400",
                 type:"video",
                 duration:3600,
                 title:"Just a title",
                 cardinality: "single"
             },
             {
-                image:"https://picsum.photos/200",
+                image:"https://picsum.photos/400",
                 type:"video",
                 duration:3600,
                 title:"Just a title",
                 cardinality: "single"
             },
             {
-                image:"https://picsum.photos/200",
+                image:"https://picsum.photos/400",
                 type:"video",
                 duration:3600,
                 title:"Just a title",
                 cardinality: "single"
             },
             {
-                image:"https://picsum.photos/200",
+                image:"https://picsum.photos/400",
                 type:"video",
                 duration:3600,
                 title:"Just a title",
                 cardinality: "single"
             },
             {
-                image:"https://picsum.photos/200",
+                image:"https://picsum.photos/400",
                 type:"video",
                 duration:3600,
                 title:"Just a title",
@@ -75,14 +75,14 @@ const option2 = {
     fetchCards(chunkSize){
         return [
             {
-                image:"https://picsum.photos/200",
+                image:"https://picsum.photos/400",
                 type:"video",
                 duration:3600,
                 title:"Just a title",
                 cardinality: "single"
             },
             {
-                image:"https://picsum.photos/200",
+                image:"https://picsum.photos/400",
                 type:"video",
                 duration:3600,
                 title:"Just a title",
