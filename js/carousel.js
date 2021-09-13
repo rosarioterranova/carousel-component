@@ -28,7 +28,8 @@ export default class Carousel{
 
     render(){
         //Creating carousel container
-        document.getElementById(this.option.container).innerHTML = `
+        const container = document.getElementById(this.option.container)
+        container.innerHTML = `
         <div class="carousel">
             <div class="header">
                 <div class="icon">
@@ -41,14 +42,14 @@ export default class Carousel{
             </div>
             <div class="cards-container">
                 <div class="scroll-action left-scroll noselect"><</div>
-                <div class="cards-overflow cards-${this.option.container}"></div>
+                <div class="cards-overflow"></div>
                 <div class="scroll-action right-scroll noselect">></div>
             </div>
         </div>
         `;
 
-        //Creating cards collection
-        const cardsSection = document.querySelector(`.cards-${this.option.container}`)
+        //Creating cards
+        const cardsSection = container.querySelector(".cards-overflow")
         for (const card of this.cards) {
             cardsSection.innerHTML += `
             <div class="card">
