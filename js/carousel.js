@@ -67,7 +67,7 @@ export default class Carousel{
                 <img src=${card.image} alt="">
                 <div class="content">
                     <p class="title">${card.title}</p>
-                    <p>text</p>
+                    <p>${card.cardinality}</p>
                 </div>
             </div>
             `
