@@ -36,9 +36,48 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  overflow: scroll;
+  overflow: hidden;
+}
+
+.carousel .cards-overflow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .carousel .card {
   margin: 10px;
+}
+
+.carousel .scroll-action {
+  position: absolute;
+  cursor: pointer;
+  width: 40px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.carousel .left-scroll {
+  left: 0;
+}
+
+.carousel .right-scroll {
+  right: 0;
 }
 /*# sourceMappingURL=carousel.css.map */

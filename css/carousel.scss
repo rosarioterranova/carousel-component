@@ -15,9 +15,38 @@
     .cards-container{
         display: flex;
         flex-direction: row;
+        overflow: scroll;
+        overflow: hidden; 
     }
+
+    .cards-overflow{
+        display: flex;
+        flex-direction: row;
+    } 
 
     .card{
         margin: 10px;
+    }
+
+    .scroll-action{
+        position: absolute;
+        cursor: pointer;
+        width: 40px;
+        height: 200px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-scroll{
+        left: 0;
+
+    }
+
+    .right-scroll{
+        right:0;
     }
 }
