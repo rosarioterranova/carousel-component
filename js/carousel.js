@@ -5,18 +5,14 @@ export default class Carousel{
         this.init()
     }
 
-    init(){
+    async init(){
         const container = document.getElementById(this.option.container)
         this.renderCarouselContainer(container)
-        
-        setTimeout(() => { //Fetching simulation
-            const cards = this.option.fetchCards()
-            container.querySelector(".cards-overflow").innerHTML = "" //remove skeleton
-            this.renderCards(container.querySelector(".cards-overflow"), cards)
-            this.setSlidingEvents(container)
-            this.setMouseScrollingEvents(container)
-        },3000)
-
+        const cards = await this.option.fetchCards()
+        container.querySelector(".cards-overflow").innerHTML = "" //remove skeleton
+        this.renderCards(container.querySelector(".cards-overflow"), cards)
+        this.setSlidingEvents(container)
+        this.setMouseScrollingEvents(container)
     }
 
     renderCarouselContainer(container){
@@ -64,9 +60,9 @@ export default class Carousel{
         `;
     }
 
-    renderCards(cardsSection, cards){
+    renderCards(cardsOverflow, cards){
         for (const card of cards) {
-            cardsSection.innerHTML += `
+            cardsOverflow.innerHTML += `
             <div class="card">
                 <img src=${card.image} alt="">
                 <div class="content">

@@ -5,65 +5,21 @@ const option1 = {
     icon:"collections",
     title:"Fresh and just uploaded content",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    fetchCards(chunkSize){
-        return [
-            {
-                image:"https://picsum.photos/400",
+    async fetchCards(chunkSize=12){
+        const cards = [];
+        for (let index = 0; index < chunkSize; index++) {
+            const imageRequest = await fetch("https://source.unsplash.com/random");
+            const resRandomTitle = await fetch("https://baconipsum.com/api/?type=meat-and-filler");
+            const randomTitle = await resRandomTitle.json()
+            cards.push({
+                image: imageRequest.url,
                 type:"video",
                 duration:3600,
-                title:"Just a title",
+                title:randomTitle[0].split(" ").slice(0,3).join(" "),
                 cardinality: "single"
-            },
-            {
-                image:"https://picsum.photos/400",
-                type:"video",
-                duration:3600,
-                title:"Just a title",
-                cardinality: "single"
-            },
-            {
-                image:"https://picsum.photos/400",
-                type:"video",
-                duration:3600,
-                title:"Just a title",
-                cardinality: "single"
-            },
-            {
-                image:"https://picsum.photos/400",
-                type:"video",
-                duration:3600,
-                title:"Just a title",
-                cardinality: "single"
-            },
-            {
-                image:"https://picsum.photos/400",
-                type:"video",
-                duration:3600,
-                title:"Just a title",
-                cardinality: "single"
-            },
-            {
-                image:"https://picsum.photos/400",
-                type:"video",
-                duration:3600,
-                title:"Just a title",
-                cardinality: "single"
-            },
-            {
-                image:"https://picsum.photos/400",
-                type:"video",
-                duration:3600,
-                title:"Just a title",
-                cardinality: "single"
-            },
-            {
-                image:"https://picsum.photos/400",
-                type:"video",
-                duration:3600,
-                title:"Just a title",
-                cardinality: "single"
-            },
-        ]
+            });
+        }
+        return cards;
     }
 }
 
@@ -72,23 +28,21 @@ const option2 = {
     icon:"event_seat",
     title:"Another carousel instance title",
     subtitle: "Consectetur adipiscing elit.",
-    fetchCards(chunkSize){
-        return [
-            {
-                image:"https://picsum.photos/400",
+    async fetchCards(chunkSize=3){
+        const cards = [];
+        for (let index = 0; index < chunkSize; index++) {
+            const imageRequest = await fetch("https://source.unsplash.com/random");
+            const resRandomTitle = await fetch("https://baconipsum.com/api/?type=meat-and-filler");
+            const randomTitle = await resRandomTitle.json()
+            cards.push({
+                image: imageRequest.url,
                 type:"video",
                 duration:3600,
-                title:"Just a title",
+                title:randomTitle[0].split(" ").slice(0,3).join(" "),
                 cardinality: "single"
-            },
-            {
-                image:"https://picsum.photos/400",
-                type:"video",
-                duration:3600,
-                title:"Just a title",
-                cardinality: "single"
-            }
-        ]
+            });
+        }
+        return cards;
     }
 }
 
