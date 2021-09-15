@@ -6,17 +6,22 @@ export default class Carousel{
     }
 
     async init(){
-        const container = document.getElementById(this.option.container)
-        this.renderCarouselContainer(container)
+        //Render container with skeleton loading
+        const containerRef = document.getElementById(this.option.container)
+        this.renderCarouselContainer(containerRef)
+
+        //Render cards
         const cards = await this.option.fetchCards()
-        container.querySelector(".cards-overflow").innerHTML = "" //remove skeleton
-        this.renderCards(container.querySelector(".cards-overflow"), cards)
-        this.setSlidingEvents(container)
-        this.setMouseScrollingEvents(container)
+        containerRef.querySelector(".cards-overflow").innerHTML = "" //remove skeleton
+        this.renderCards(containerRef.querySelector(".cards-overflow"), cards)
+
+        //Set events
+        this.setSlidingEvents(containerRef)
+        this.setMouseScrollingEvents(containerRef)
     }
 
-    renderCarouselContainer(container){
-        container.innerHTML = `
+    renderCarouselContainer(containerRef){
+        containerRef.innerHTML = `
         <div class="carousel">
             <div class="header">
                 <div class="icon">
@@ -60,9 +65,9 @@ export default class Carousel{
         `;
     }
 
-    renderCards(cardsOverflow, cards){
+    renderCards(cardsOverflowRef, cards){
         for (const card of cards) {
-            cardsOverflow.innerHTML += `
+            cardsOverflowRef.innerHTML += `
             <div class="card">
                 <img src=${card.image} alt="">
                 <div class="content">
@@ -74,58 +79,56 @@ export default class Carousel{
         }
     }
 
-    setSlidingEvents(container){
-        const slider = container.querySelector(".cards-container");
-        const leftButton = container.querySelector(".left-scroll")
-        const rightButton = container.querySelector(".right-scroll")
+    setSlidingEvents(containerRef){
+        const sliderRef = containerRef.querySelector(".cards-container");
+        const leftButtonRef = containerRef.querySelector(".left-scroll")
+        const rightButtonRef = containerRef.querySelector(".right-scroll")
 
         const SCROLL_SPEED = 6;
         let scrollDirection = 0; //0 stop, -1 left, +1 right
 
         //Button sliding
-        leftButton.addEventListener("mousedown", ()=>scrollDirection = -1);
-        rightButton.addEventListener("mousedown", ()=>scrollDirection = 1);
-        leftButton.addEventListener("mouseup", ()=> scrollDirection = 0);
-        rightButton.addEventListener("mouseup", ()=> scrollDirection = 0);
+        leftButtonRef.addEventListener("mousedown", ()=>scrollDirection = -1);
+        rightButtonRef.addEventListener("mousedown", ()=>scrollDirection = 1);
+        leftButtonRef.addEventListener("mouseup", ()=> scrollDirection = 0);
+        rightButtonRef.addEventListener("mouseup", ()=> scrollDirection = 0);
 
         (function slide() {
-            slider.scrollLeft += scrollDirection * SCROLL_SPEED;
+            sliderRef.scrollLeft += scrollDirection * SCROLL_SPEED;
             requestAnimationFrame(slide);
         })();
     }
 
-    setMouseScrollingEvents(container){
-        const slider = container.querySelector('.cards-container');
+    setMouseScrollingEvents(containerRef){
+        const sliderRef = containerRef.querySelector('.cards-container');
         let isDown = false;
         let startX;
         let scrollLeft;
         const SCROLL_SPEED = 2;
 
-        slider.addEventListener('mousedown', e => {
+        sliderRef.addEventListener('mousedown', e => {
             isDown = true;
-            slider.classList.add('active');
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
+            sliderRef.classList.add('active');
+            startX = e.pageX - sliderRef.offsetLeft;
+            scrollLeft = sliderRef.scrollLeft;
         });
 
-        slider.addEventListener('mouseleave', _ => {
+        sliderRef.addEventListener('mouseleave', _ => {
             isDown = false;
-            slider.classList.remove('active');
+            sliderRef.classList.remove('active');
         });
 
-        slider.addEventListener('mouseup', _ => {
+        sliderRef.addEventListener('mouseup', _ => {
             isDown = false;
-            slider.classList.remove('active');
+            sliderRef.classList.remove('active');
         });
 
-        slider.addEventListener('mousemove', e => {
+        sliderRef.addEventListener('mousemove', e => {
             if (!isDown) return;
             e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
+            const x = e.pageX - sliderRef.offsetLeft;
             const walk = (x - startX) * SCROLL_SPEED;
-            slider.scrollLeft = scrollLeft - walk;
+            sliderRef.scrollLeft = scrollLeft - walk;
         });
     }
-
-    
 }

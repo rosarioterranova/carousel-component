@@ -1,6 +1,6 @@
 import Carousel from "./carousel.js"
 
-const option1 = {
+const carousel1 = new Carousel({
     container:"myCarousel1",
     icon:"collections",
     title:"Fresh and just uploaded content",
@@ -21,9 +21,9 @@ const option1 = {
         }
         return cards;
     }
-}
+})
 
-const option2 = {
+const carousel2 = new Carousel({
     container:"myCarousel2",
     icon:"event_seat",
     title:"Another carousel instance title",
@@ -44,7 +44,4 @@ const option2 = {
         }
         return cards;
     }
-}
-
-const carousel1 = new Carousel(option1)
-const carousel2 = new Carousel(option2)
+})
